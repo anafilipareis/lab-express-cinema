@@ -15,3 +15,5 @@ mongoose
   .catch((err) => {
     console.error("Error connecting to mongo: ", err);
   });
+
+  // Once this connection is established, I don't need to reconnect to the database in every file or module that interacts with MongoDB.
