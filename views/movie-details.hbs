@@ -1,0 +1,34 @@
+
+    <header>
+        <h1>{{movie.title}}</h1>
+        <p>Directed by: {{movie.director}}</p>
+    </header>
+
+    <section>
+        <img src="{{movie.image}}" alt="{{movie.title}}">
+    </section>
+
+    <section>
+        <h2>Description</h2>
+        <p>{{movie.description}}</p>
+    </section>
+
+    <section>
+        <h2>Stars</h2>
+        <p>{{movie.stars}}</p>
+    </section>
+
+    <section>
+        <h2>Showtimes</h2>
+        <ul>
+            {{#each movie.showtimes}}
+                <li>{{this}}</li>
+            {{/each}}
+        </ul>
+    </section>
+
+   
+
+   
+
+

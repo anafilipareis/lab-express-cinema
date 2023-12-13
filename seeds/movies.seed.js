@@ -1,4 +1,5 @@
-const Movie = require('../Models/Movie.model');
+const mongoose = require("mongoose");
+const Movie = require('../Models/Movie.model'); //vai importar o modelo aqui
 
 // Movies Data
 const movies = [
@@ -85,30 +86,37 @@ const movies = [
   ];
 
 
+  mongoose.connect('mongodb://127.0.0.1:27017/lab-express-cinema')
+        .then(() => console.log('Connection to DB successful'))
+        .then(()=> Movie.create(movies))
+        .then((allMovies) => console.log(`${allMovies.length} movies were added`))
+        .then(()=> mongoose.connection.close())
+        .catch(err => console.log(err))
+
 
 // Function to seed the database with movies
-const seedDatabase = async () => {
-    try {
-      // Delete all existing documents in the Movie collection
-      await Movie.deleteMany();  
+// const seedDatabase = async () => {
+//     try {
+//       // Delete all existing documents in the Movie collection
+//       await Movie.deleteMany();  
   
-      // Insert the movies data into the Movie collection como se fosse um template e quero substituir os dados ?
-      await Movie.insertMany(movies);
-        console.log('Database seeded successfully!');
+//       // Insert the movies data into the Movie collection como se fosse um template e quero substituir os dados ?
+//       await Movie.insertMany(movies);
+//         console.log('Database seeded successfully!');
 
-    } 
+//     } 
     
-    catch (error) {
-            console.error('Error seeding database:', error);
+//     catch (error) {
+//             console.error('Error seeding database:', error);
 
-    } 
+//     } 
     
-    finally {
-      // Close the Mongoose connection
-      mongoose.connection.close();
-    }
-  };
+//     finally {
+//       // Close the Mongoose connection
+//       mongoose.connection.close();
+//     }
+//   };
   
-  // Start the seeding process
-  seedDatabase();
+// Start the seeding process
+//seedDatabase();
 

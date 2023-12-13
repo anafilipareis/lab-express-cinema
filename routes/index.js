@@ -10,6 +10,7 @@ router.get('/movies', async (req, res, next) => {
     try {
       
       const movies = await Movie.find();  // obter todos os filmes da base de dados através do modelo Movie
+      
   console.log('Movies:', movies);
       res.render('movies', { movies }); // faz aparecer o conteúdo quando um GET request é feito?
     }
